@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 
-import { routes } from './routes/Routes';
-import LogoImg from './assets/react.svg'
+import { routes } from './Routes';
+import LogoImg from '../../public/react.svg'
 
 export const Navigation = () => {
   return (
