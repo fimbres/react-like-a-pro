@@ -52,32 +52,38 @@ nav li a {
   transition: all .3s ease-out;
 }
 
-.productCard {
-  background-color: white;
+.product-card {
+  background-color: #2c3342;
   border-radius: 15px;
-  color: black;
+  color: hwb(0 100% 0%);
   padding-bottom: 5px;
-  width: 250px;
-  margin-right: 5px;
-  margin-top: 5px;
+  padding-top: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.productImg {
+.product-img {
   border-radius: 15px 15px 0px 0px;
   width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
 }
 
-.productDescription {
+.product-description {
   margin: 10px;
+  text-align: center;
+  padding-top: 20px;
 }
 
-.buttonsContainer {
+.buttons-container {
   margin: 10px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.buttonMinus {
+.button-minus {
   cursor: pointer;
   background-color: transparent;
   border: 1px solid black;
@@ -86,11 +92,11 @@ nav li a {
   width: 30px;
 }
 
-.buttonMinus:hover {
+.button-minus:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.countLabel {
+.count-label {
   border-bottom: 1px solid black;
   border-top: 1px solid black;
   font-size: 16px;
@@ -100,7 +106,7 @@ nav li a {
   width: 30px;
 }
 
-.buttonAdd {
+.button-add {
   cursor: pointer;
   background-color: transparent;
   border: 1px solid black;
@@ -109,6 +115,16 @@ nav li a {
   width: 30px;
 }
 
-.buttonAdd:hover {
+.button-add:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.products-holder {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column: 2;
+  gap: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
