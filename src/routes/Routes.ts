@@ -1,6 +1,7 @@
 import { lazy, LazyExoticComponent, type ReactElement } from "react";
 
 import { NoLazy } from "../componens/lazy-loading/pages/NoLazy";
+import { ProductsScreen } from "../componens/patterns/ProductsScreen";
 const LazyLayout = lazy(() => import(/* webpackChunckName: "lazylayout" */ '../componens/lazy-loading/layout/LazyLayout'));
 const LazyPage = lazy(() => import(/* webpackChunckName: "lazypage" */ '../componens/lazy-loading/pages/LazyPage'));
 const LazyPage2 = lazy(() => import(/* webpackChunckName: "lazypage-2" */ '../componens/lazy-loading/pages/LazyPage2'));
@@ -15,6 +16,14 @@ export interface Route {
 }
 
 export const routes: Route[] = [
+  {
+    path: '/',
+    label: 'Products',
+    Component: ProductsScreen,
+  },
+];
+
+export const lazyRoutes: Route[] = [
   {
     path: 'lazy-layout/*',
     label: 'Lazy Layout',
