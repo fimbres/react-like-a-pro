@@ -25,7 +25,11 @@ export const ProductsScreen = () => {
       <h1>All Products</h1>
       <div className="products-holder">
         {dummyData.map(product => (
-          <ProductCard key={product.id} product={product}>
+          <ProductCard 
+            key={product.id}
+            product={product}
+            className='bg-dark'
+          >
             <ProductCard.Image />
             <ProductCard.Title />
             <ProductCard.Buttons />
