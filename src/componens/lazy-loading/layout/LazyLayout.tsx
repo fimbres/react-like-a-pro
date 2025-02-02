@@ -7,20 +7,20 @@ const LazyLayout = () => {
   return (
     <div>
       <h1>Lazy Layout</h1>
-        <ul>
+      <ul>
+        {routes.map(route => (
+          <li key={route.label}>
+            <NavLink to={route.path} className={({ isActive }) => isActive ? 'nav-active' : ''}>{route.label}</NavLink>
+          </li>
+        ))}
+      </ul>
+      <Suspense fallback={<p>Cargando...</p>}>
+        <Routes>
           {routes.map(route => (
-            <li key={route.label}>
-              <NavLink to={route.path} className={({ isActive }) => isActive ? 'nav-active' : ''}>{route.label}</NavLink>
-            </li>
+            <Route key={route.path} path={route.path} Component={route.Component} />
           ))}
-        </ul>
-        <Suspense fallback={<p>Cargando...</p>}>
-          <Routes>
-            {routes.map(route => (
-              <Route key={route.path} path={route.path} Component={route.Component} />
-            ))}
-          </Routes>
-        </Suspense>
+        </Routes>
+      </Suspense>
     </div>
   )
 }
