@@ -12,7 +12,7 @@ export const ProductsScreen = () => {
       <h1>All Products</h1>
       <div className="products-holder">
         {products.map(product => (
-          <ProductCard 
+          <ProductCard
             key={product.id}
             product={product}
             className='bg-dark'
