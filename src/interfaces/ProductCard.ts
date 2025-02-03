@@ -15,5 +15,7 @@ export interface ProductCardContextProps {
 export interface ProductCardProps {
   children: ReactNode,
   product: Product,
-  className?: string
+  className?: string,
+  value: number;
+  onChange?: (value: number) => void;
 }
