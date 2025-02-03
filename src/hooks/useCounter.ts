@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 
+import { InitialValues } from "../interfaces/ProductCard";
+
 interface useCounterProps {
   value: number;
-  defaultVal?: number;
-  minVal?: number;
+  initialValues?: InitialValues;
   onChange?: (quantity: number) => void;
 }
 
-export const useCounter = ({ minVal = 0, value, onChange } : useCounterProps) => {
-  const [counter, setCounter] = useState(value);
+export const useCounter = ({ value, initialValues, onChange } : useCounterProps) => {
+  const [counter, setCounter] = useState(initialValues?.count || value);
   const isControlled = useRef(onChange);
 
   const increaseBy = (value: number) => {
     const newValue = counter + value;
 
-    if(newValue >= minVal && isControlled.current) {
+    if(newValue >= 0 && newValue <= (initialValues?.maxCount || Infinity) && isControlled.current) {
       setCounter(newValue);
       onChange?.(newValue);
     }
