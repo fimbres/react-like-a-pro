@@ -6,13 +6,13 @@ import { ProductCardContextProps, ProductCardProps } from "../../interfaces/Prod
 const ProductCardContext = createContext({} as ProductCardContextProps);
 const { Provider } = ProductCardContext;
 
-export const ProductCard = ({ children, product, className, value = 0, onChange }: ProductCardProps) => {
-  const { counter, increaseBy } = useCounter({ onChange, value });
+export const ProductCard = ({ children, product, className, value = 0, initialValues, onChange }: ProductCardProps) => {
+  const { counter, increaseBy } = useCounter({ onChange, value, initialValues });
 
   return (
     <Provider value={{ counter, increaseBy, product }}>
       <div className={"product-card " + className}>
-        {children}
+        {typeof children === 'function' ? children('Hello World') : children}
       </div>
     </Provider>
   );

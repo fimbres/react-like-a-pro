@@ -12,10 +12,16 @@ export interface ProductCardContextProps {
   product: Product;
 }
 
+export interface InitialValues {
+  count?: number;
+  maxCount?: number;
+}
+
 export interface ProductCardProps {
-  children: ReactNode,
+  children: ((message: string) => ReactNode) | ReactNode,
   product: Product,
   className?: string,
-  value: number;
+  value?: number;
+  initialValues?: InitialValues;
   onChange?: (value: number) => void;
 }
