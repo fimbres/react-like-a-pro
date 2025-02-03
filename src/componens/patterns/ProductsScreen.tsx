@@ -1,34 +1,23 @@
-import { Product } from "../../interfaces/ProductCard";
 import { ProductCard } from "./ProductCard"
 
-const dummyData: Product[] = [
-  {
-    id: "1",
-    image: "./car.webp",
-    title: "Tundra 2025"
-  },
-  {
-    id: "2",
-    image: "./car2.png",
-    title: "CRV 2015"
-  },
-  {
-    id: "3",
-    image: "./car3.png",
-    title: "C200 2017"
-  },
-];
+import { products } from "../../data/products";
+
+import { useCart } from "../../hooks/useCart";
 
 export const ProductsScreen = () => {
+  const { cart, onProductQuantityChange } = useCart();
+
   return (
     <div>
       <h1>All Products</h1>
       <div className="products-holder">
-        {dummyData.map(product => (
+        {products.map(product => (
           <ProductCard 
             key={product.id}
             product={product}
             className='bg-dark'
+            value={cart[product.id]?.quantity || 0}
+            onChange={q => onProductQuantityChange(product, q)}
           >
             <ProductCard.Image />
             <ProductCard.Title />
@@ -36,6 +25,21 @@ export const ProductsScreen = () => {
           </ProductCard>
         ))}
       </div>
+      {Object.keys(cart).length > 0 && (
+        <div className="shopping-cart">
+          {Object.entries(cart).map(([key, product]) => (
+            <ProductCard 
+              key={key}
+              product={product}
+              value={product.quantity || 0}
+              onChange={q => onProductQuantityChange(product, q)}
+            >
+              <ProductCard.Image />
+              <ProductCard.Buttons />
+            </ProductCard>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
